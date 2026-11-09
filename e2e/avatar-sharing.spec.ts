@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test-base';
 import { readFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { zipSync, unzipSync } from 'fflate';

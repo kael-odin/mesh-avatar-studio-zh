@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test-base';
 import { samplePresent, sampleSkipReason } from './sample';
 import type { MeshAvatarElement, MeshAvatarProps } from '../packages/react/src/index';
 

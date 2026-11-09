@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page } from './test-base';
 import { dismissGuide, samplePresent, sampleSkipReason } from './sample';
 
 test.beforeEach(async ({ page }) => {

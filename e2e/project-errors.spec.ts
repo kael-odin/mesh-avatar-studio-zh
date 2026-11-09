@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test-base';
 
 const messages = {
   en: { unreadable: 'Cannot read this project.', missing: 'Required files are missing.', read: 'A file or folder could not be read.' },

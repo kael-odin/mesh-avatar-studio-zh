@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test-base';
 import { samplePresent, sampleSkipReason } from './sample';
 
 test.beforeEach(() => test.skip(!samplePresent, sampleSkipReason));

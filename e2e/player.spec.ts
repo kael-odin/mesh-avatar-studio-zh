@@ -1,4 +1,4 @@
-import { expect, test, type BrowserContext, type Page } from '@playwright/test';
+import { expect, test, type BrowserContext, type Page } from './test-base';
 import { PNG } from 'pngjs';
 import { readFile } from 'node:fs/promises';
 import { samplePresent, sampleSkipReason } from './sample';
@@ -141,4 +141,12 @@ test('Japanese player page uses Japanese text and links back to the English page
   await expect(page.getByTestId('player-status')).toContainText('アバターの準備ができました');
   await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('href', '../../play/');
   expect(await readFile(new URL('../site/ja/play/index.html', import.meta.url), 'utf8')).toContain('lang="ja"');
+});
+
+test('Chinese player page uses Chinese text and links to the other languages', async ({ page }) => {
+  await page.goto(`${site}zh/play/`);
+  await expect(page.getByTestId('player-status')).toContainText('虚拟形象已就绪');
+  await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('href', '../../play/');
+  await expect(page.getByRole('link', { name: '日本語' })).toHaveAttribute('href', '../../ja/play/');
+  expect(await readFile(new URL('../site/zh/play/index.html', import.meta.url), 'utf8')).toContain('lang="zh"');
 });

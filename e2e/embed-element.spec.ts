@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test-base';
 import { readFile } from 'node:fs/promises';
 import { PNG } from 'pngjs';
 import type { MeshAvatarElement } from '../packages/element/src/index';

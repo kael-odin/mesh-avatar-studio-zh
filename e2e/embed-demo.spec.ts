@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test-base';
 import { PNG } from 'pngjs';
 import { readFile } from 'node:fs/promises';
 import { samplePresent, sampleSkipReason } from './sample';
@@ -26,11 +26,15 @@ test.beforeEach(async ({ context, page }) => {
 test.afterEach(({ page }) => { expect(outside.get(page) ?? []).toEqual([]); });
 
 async function checkMouthStyles(page: Page, language = 'en') {
-  const selector = page.getByRole('combobox', { name: language === 'ja' ? '口の動きのタイプ' : 'Mouth style', exact: true });
+  const selector = page.getByRole('combobox', {
+    name: language === 'ja' ? '口の動きのタイプ' : language === 'zh' ? '口型风格' : 'Mouth style', exact: true,
+  });
   await expect(selector).toHaveValue('default');
   await expect(selector.locator('option:not([disabled])')).toHaveText(language === 'ja'
     ? ['ゆったり', '標準', 'キビキビ', '控えめ', 'はっきり']
-    : ['Relaxed', 'Standard', 'Snappy', 'Subtle', 'Expressive']);
+    : language === 'zh'
+      ? ['舒缓', '标准', '轻快', '柔和', '夸张']
+      : ['Relaxed', 'Standard', 'Snappy', 'Subtle', 'Expressive']);
   expect(await page.evaluate(() => document.querySelector('mesh-avatar')!.lipSync)).toEqual({});
   const styles = {
     calm: { granularity: 0, openness: 0.5, closeSpeed: 0 },
@@ -57,11 +61,11 @@ async function checkMouthStyles(page: Page, language = 'en') {
   }
 }
 
-for (const language of ['en', 'ja']) {
+for (const language of ['en', 'ja', 'zh'] as const) {
   test(`embed demo works in ${language} without outside requests`, async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
-    await page.goto(`${site}${language === 'ja' ? 'ja/' : ''}embed/`);
+    await page.goto(`${site}${language === 'ja' ? 'ja/' : language === 'zh' ? 'zh/' : ''}embed/`);
     await expect(page.locator('#status')).toHaveAttribute('data-state', 'ready');
     await expect(page.locator('html')).toHaveAttribute('lang', language);
     await checkMouthStyles(page, language);
@@ -107,7 +111,14 @@ for (const language of ['en', 'ja']) {
     await expect(page.locator('#status')).toHaveAttribute('data-state', 'error');
     await page.locator('#restore-miko').click();
     await expect(page.locator('#status')).toHaveAttribute('data-state', 'ready');
-    await expect(page.locator('.language-switch')).toHaveAttribute('href', language === 'ja' ? '../../embed/' : '../ja/embed/');
+    await expect(page.getByRole('link', { name: language === 'en' ? '日本語' : 'English', exact: true }))
+      .toHaveAttribute('href', language === 'en' ? '../ja/embed/' : '../../embed/');
+    if (language === 'zh') {
+      await expect(page.getByRole('link', { name: '日本語', exact: true })).toHaveAttribute('href', '../../ja/embed/');
+    } else {
+      await expect(page.getByRole('link', { name: '中文', exact: true }))
+        .toHaveAttribute('href', `${language === 'en' ? '..' : '../..'}/zh/embed/`);
+    }
     expect(errors).toEqual([]);
   });
 }

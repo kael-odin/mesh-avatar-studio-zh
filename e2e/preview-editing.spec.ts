@@ -1,7 +1,7 @@
 import { dismissGuide, samplePresent, sampleSkipReason } from './sample';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test-base';
 import { PNG } from 'pngjs';
 import fixture from '../samples/miko-qipao/rig.json' with { type: 'json' };
 

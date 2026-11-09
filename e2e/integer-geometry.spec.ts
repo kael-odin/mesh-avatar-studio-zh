@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page } from './test-base';
 import { cp, mkdir, mkdtemp, readFile, rm } from 'node:fs/promises';
 import { basename, join, resolve } from 'node:path';
 import fixture from '../samples/miko-qipao/rig.json' with { type: 'json' };

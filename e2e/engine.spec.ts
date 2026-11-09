@@ -1,5 +1,5 @@
 import { dismissGuide, samplePresent, sampleSkipReason } from './sample';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test-base';
 
 test('renders the data-driven engine without browser errors', async ({ page }) => {
   test.skip(!samplePresent, sampleSkipReason);

@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test-base';
 import { createHash } from 'node:crypto';
 import { dismissGuide, samplePresent, sampleSkipReason } from './sample';
 

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './test-base';
 import { resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { dismissGuide, samplePresent, sampleSkipReason } from './sample';

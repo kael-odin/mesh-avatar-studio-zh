@@ -1,5 +1,5 @@
 import { dismissGuide, samplePresent, sampleSkipReason } from './sample';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test-base';
 import { cp, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test-base';
 
 test('missing sample images show an empty workspace with project opening controls', async ({ page }) => {
   await page.route('**/miko-qipao/**', route => {
