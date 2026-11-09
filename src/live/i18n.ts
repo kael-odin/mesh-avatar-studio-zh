@@ -1,5 +1,5 @@
 export const liveEn = {
-  title: 'Live', back: 'Back to editor', camera: 'Camera', device: 'Device', defaultDevice: 'Default device',
+  title: 'Live', badgeOn: 'ON', back: 'Back to editor', camera: 'Camera', device: 'Device', defaultDevice: 'Default device',
   start: 'Start camera', stop: 'Stop camera', calibrate: 'Calibrate', calibrated: 'Neutral pose saved',
   calibrateHint: 'Look straight at the camera with relaxed eyes and a closed mouth, then calibrate.',
   bodyTracking: 'Track body movement (experimental)', bodyTrackingHint: 'Uses visible shoulders, hips, elbows and wrists. Missing points return to idle. When off, only the face is tracked.',
@@ -35,7 +35,7 @@ export const liveEn = {
   presetHint: 'Save stores the current lighting in that slot. While this page is focused, Shift+1–8 apply presets. Other apps can send {"preset": 1} to the URL below with the same token as expressions.',
 };
 const liveJa: typeof liveEn = {
-  title: '配信', back: 'エディタに戻る', camera: 'カメラ', device: 'デバイス', defaultDevice: '既定のデバイス',
+  title: '配信', badgeOn: 'ON', back: 'エディタに戻る', camera: 'カメラ', device: 'デバイス', defaultDevice: '既定のデバイス',
   start: 'カメラを開始', stop: 'カメラを停止', calibrate: '正面の姿勢を登録', calibrated: '正面の姿勢を登録しました',
   calibrateHint: '目と口の力を抜き、口を閉じてカメラに正面を向いた状態で登録してください。',
   bodyTracking: '体の動きを認識(実験的)', bodyTrackingHint: '映っている肩・腰・肘・手首を使います。検出できない部位は待機動作に戻ります。オフのときは顔だけを追跡します。',
@@ -71,7 +71,7 @@ const liveJa: typeof liveEn = {
   presetHint: '「保存」で今のライティングをその枠に保存します。この画面を操作している間は、Shift+1〜8でプリセットを呼び出せます。他のアプリからは、表情と同じトークンを付けて下のURLに {"preset": 1} を送ります。',
 };
 const liveZh: typeof liveEn = {
-  title: '直播', back: '返回编辑器', camera: '摄像头', device: '设备', defaultDevice: '默认设备',
+  title: '直播', badgeOn: '开', back: '返回编辑器', camera: '摄像头', device: '设备', defaultDevice: '默认设备',
   start: '启动摄像头', stop: '停止摄像头', calibrate: '校准', calibrated: '已保存中立姿态',
   calibrateHint: '正视摄像头，放松眼睛并闭上嘴，然后校准。',
   bodyTracking: '追踪身体动作（实验性）', bodyTrackingHint: '使用可见的肩膀、髋部、手肘和手腕。无法检测的部位恢复待机动作。关闭时只追踪面部。',

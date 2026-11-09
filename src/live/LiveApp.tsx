@@ -196,13 +196,13 @@ export function LiveApp() {
         <a href="https://github.com/shinshin86/mesh-avatar-studio/blob/main/docs/reference.md#switching-expressions-from-other-apps" target="_blank" rel="noreferrer">{t.remoteDocs}</a></div>
       </details>
       {availableOverlays.length > 0 && <details className="live-overlays" data-testid="overlay-section" open>
-        <summary><Icon name="eye" />{t.overlays}{settings.overlays.some(name => availableOverlays.includes(name)) && <span className="overlays-on">ON</span>}</summary>
+        <summary><Icon name="eye" />{t.overlays}{settings.overlays.some(name => availableOverlays.includes(name)) && <span className="overlays-on">{t.badgeOn}</span>}</summary>
         <div className="overlay-buttons" role="group" aria-label={t.overlays}>
           {availableOverlays.map(name => <button key={name} type="button" aria-pressed={settings.overlays.includes(name)} onClick={() => toggleOverlay(name)}>{name}</button>)}
         </div><small>{t.overlaysHint}</small>
       </details>}
       <details className="live-lighting" data-testid="lighting-section" onToggle={event => setLightingOpen(event.currentTarget.open)}>
-        <summary><Icon name="light" />{lightingText[language].title}{settings.lighting.enabled && <span className="lighting-on">ON</span>}</summary>
+        <summary><Icon name="light" />{lightingText[language].title}{settings.lighting.enabled && <span className="lighting-on">{lightingText[language].badgeOn}</span>}</summary>
         <div className="lighting-presets"><h3>{t.presets}</h3>
           <div className="preset-slots" role="group" aria-label={t.presets}>
             {presets.map((value, i) => <div className="preset-slot" key={i}>

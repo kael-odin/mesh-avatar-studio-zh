@@ -197,7 +197,7 @@ export function Preview({ projectKey, rig, assets, lipSync, onLipSyncChange, has
 
       </div>
       <details className="lighting-section" data-testid="lighting-section" onToggle={event => setLightingOpen(event.currentTarget.open)}>
-        <summary><Icon name="light" />{lightingText[language].title}{lighting.enabled && <span className="lighting-on">ON</span>}</summary>
+        <summary><Icon name="light" />{lightingText[language].title}{lighting.enabled && <span className="lighting-on">{lightingText[language].badgeOn}</span>}</summary>
         <LightingControls value={lighting} onChange={setLighting} language={language} />
       </details>
     </section>
