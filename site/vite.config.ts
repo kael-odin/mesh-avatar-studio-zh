@@ -99,10 +99,13 @@ export default defineConfig({
       input: {
         en: fromHere('./index.html'),
         ja: fromHere('./ja/index.html'),
+        zh: fromHere('./zh/index.html'),
         play: fromHere('./play/index.html'),
         'ja-play': fromHere('./ja/play/index.html'),
+        'zh-play': fromHere('./zh/play/index.html'),
         embed: fromHere('./embed/index.html'),
         'ja-embed': fromHere('./ja/embed/index.html'),
+        'zh-embed': fromHere('./zh/embed/index.html'),
       },
       output: { banner: `/*! fflate\n${fflateLicense}\n*/` },
     },

@@ -1,6 +1,6 @@
 .player-app .live-header a { font-size: 13px; text-decoration: none; }
 .player-app .live-header a:hover { text-decoration: underline; }
-.player-language { flex-shrink: 0; }
+.player-language { display: flex; gap: 12px; flex-shrink: 0; }
 .player-intro { margin: -8px 0 16px; color: #546a87; }
 .player-stage { position: relative; }
 .player-canvas { display: block; width: 100%; height: 100%; }

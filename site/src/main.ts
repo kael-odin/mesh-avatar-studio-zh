@@ -15,16 +15,16 @@ import liveImageJa from '../../docs/images/ja/07-live.png';
 import streamImageJa from '../../docs/images/ja/08-stream.png';
 import './style.css';
 
-const screenshots: Record<string, string> = {
-  en: {
-    overview: overviewImage, handles: handlesImage, lipSync: lipSyncImage,
-    variants: variantsImage, live: liveImage, stream: streamImage,
-  },
-  ja: {
-    overview: overviewImageJa, handles: handlesImageJa, lipSync: lipSyncImageJa,
-    variants: variantsImageJa, live: liveImageJa, stream: streamImageJa,
-  },
-}[language];
+const enScreenshots: Record<string, string> = {
+  overview: overviewImage, handles: handlesImage, lipSync: lipSyncImage,
+  variants: variantsImage, live: liveImage, stream: streamImage,
+};
+const jaScreenshots: Record<string, string> = {
+  overview: overviewImageJa, handles: handlesImageJa, lipSync: lipSyncImageJa,
+  variants: variantsImageJa, live: liveImageJa, stream: streamImageJa,
+};
+// Chinese pages reuse the English screenshots.
+const screenshots = language === 'ja' ? jaScreenshots : enScreenshots;
 for (const image of document.querySelectorAll<HTMLImageElement>('img[data-screenshot]')) {
   image.src = screenshots[image.dataset.screenshot!];
   const link = image.closest('a');

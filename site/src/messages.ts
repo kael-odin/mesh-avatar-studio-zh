@@ -16,7 +16,7 @@ interface Messages {
   copyFailed: string;
 }
 
-const messages: Record<'en' | 'ja', Messages> = {
+const messages: Record<'en' | 'ja' | 'zh', Messages> = {
   en: {
     expressions: {
       neutral: 'Neutral', smile: 'Smile', shy: 'Shy', surprise: 'Surprise',
@@ -53,7 +53,26 @@ const messages: Record<'en' | 'ja', Messages> = {
     copySucceeded: 'クリップボードにコピーしました。',
     copyFailed: 'コピーできませんでした。コードを選択したので、ブラウザのコピー操作を使ってください。',
   },
+  zh: {
+    expressions: {
+      neutral: '平静', smile: '微笑', shy: '害羞', surprise: '惊讶',
+      halfLidded: '半睁眼', angry: '生气', sad: '难过', wink: '眨眼',
+    },
+    mouthStyle: '口型风格',
+    mouthStyleHint: '选择一种风格，再用下方文字试试口型动画。',
+    customMouthStyle: '自定义',
+    mouthStyles: { calm: '舒缓', default: '标准', lively: '轻快', subtle: '柔和', big: '夸张' },
+    pointerHint: '移动指针，她会转向指针的方向。',
+    expressionHint: '选一个表情试试看。',
+    loading: '正在加载实时预览…',
+    loadFailed: '实时预览加载失败。请在支持 WebGL 的浏览器中重新加载。你仍可以在 GitHub 或 npm 上了解这个项目。',
+    copy: '复制',
+    copied: '已复制',
+    copySucceeded: '已复制到剪贴板。',
+    copyFailed: '无法使用复制功能。代码已选中，请使用浏览器的复制命令。',
+  },
 };
 
-export const language = document.documentElement.lang.split('-')[0] === 'ja' ? 'ja' : 'en';
+const lang = document.documentElement.lang.split('-')[0];
+export const language = lang === 'ja' ? 'ja' : lang === 'zh' ? 'zh' : 'en';
 export const copy = messages[language];

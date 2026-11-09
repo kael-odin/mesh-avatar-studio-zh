@@ -1,9 +1,9 @@
-export type PlayerLanguage = 'en' | 'ja';
+export type PlayerLanguage = 'en' | 'ja' | 'zh';
 
 const en = {
   title: 'Player',
   home: 'Mesh Avatar Studio home',
-  otherLanguage: '日本語',
+  languageNav: 'Language',
   intro: 'Move a mesh avatar with your face and voice, right in this browser. Nothing to install.',
   avatar: 'Avatar',
   sample: 'Miko (sample)',
@@ -40,7 +40,7 @@ const en = {
 const ja: typeof en = {
   title: 'Player',
   home: 'Mesh Avatar Studio のトップへ',
-  otherLanguage: 'English',
+  languageNav: '言語',
   intro: 'メッシュアバターを、顔と声でこのブラウザ上ですぐに動かせます。インストールは不要です。',
   avatar: 'アバター',
   sample: 'ミコ(サンプル)',
@@ -74,4 +74,41 @@ const ja: typeof en = {
   expressionHint: 'この画面かアバターウィンドウを操作している間は、キー1〜8で表情を切り替えられます。通常に戻すときはキー1を押します。',
 };
 
-export const playerText = { en, ja };
+const zh: typeof en = {
+  title: 'Player',
+  home: 'Mesh Avatar Studio 首页',
+  languageNav: '语言',
+  intro: '在这个浏览器里，用你的表情和声音驱动网格虚拟形象，无需安装任何软件。',
+  avatar: '虚拟形象',
+  sample: 'Miko（示例）',
+  open: '打开 .mavatar 文件',
+  useSample: '使用示例',
+  dropHint: '也可以把 .mavatar 文件拖到页面任意位置打开。',
+  makeOwn: '用 Mesh Avatar Studio 制作自己的虚拟形象',
+  loading: '正在加载虚拟形象…',
+  ready: '虚拟形象已就绪',
+  loadError: '无法打开此文件。请选择从 Mesh Avatar Studio 导出的 .mavatar 文件。',
+  tooLarge: '文件超过 128 MiB。',
+  dropHere: '松开以打开 .mavatar 文件',
+  background: '背景',
+  none: '无（仅预览）',
+  bgHintNone: '窗口捕获无法保留透明。要在 OBS 中使用，请选择绿色或蓝色。',
+  bgHintChroma: '在 OBS 中为捕获源添加“色度键”滤镜，并选择相同的键控颜色。',
+  bgHintCustom: '在 OBS 中为捕获源添加“颜色键”滤镜，并设置为此颜色。',
+  show: '在 OBS 中显示',
+  showHelp: '在独立窗口中打开虚拟形象，然后在 OBS 中用“窗口采集”（macOS 上为窗口模式的“macOS 屏幕采集”）添加该窗口。',
+  popOut: '打开虚拟形象窗口',
+  popIn: '关闭虚拟形象窗口',
+  popped: '虚拟形象正在独立窗口中显示。',
+  popOutUnsupported: '虚拟形象窗口需要 Chrome 或 Edge。请改用“仅在此窗口显示虚拟形象”。',
+  fullWindow: '仅在此窗口显示虚拟形象',
+  exitFullWindow: '按 Esc 或点击可重新显示控制面板。',
+  keepVisible: '请保持虚拟形象窗口可见。窗口被最小化或被完全遮挡时，浏览器会暂停绘制。',
+  privacy: '所有处理都在此浏览器中进行。虚拟形象文件、摄像头画面和麦克风音频都不会上传。',
+  credit: 'Miko © Yuki Shindo (AITuber OnAir)。',
+  terms: '使用规范',
+  presetHint: '“保存”会把当前光照存入该栏位。当此页面或虚拟形象窗口处于焦点时，按 Shift+1–8 可应用预设。',
+  expressionHint: '当此页面或虚拟形象窗口处于焦点时，按 1–8 切换表情，按 1 回到平静。',
+};
+
+export const playerText = { en, ja, zh };
