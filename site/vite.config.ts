@@ -11,10 +11,10 @@ import { mediapipeAssets } from '../src/server/mediapipe-assets';
 const fromHere = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 // Forward slashes on every platform, as Vite matches deny patterns against normalized paths.
 const repository = fromHere('..').replace(/\\/g, '/').replace(/\/$/, '');
-const base = '/mesh-avatar-studio/';
+const base = '/mesh-avatar-studio-zh/';
 // External mesh-avatar-element embeds use this path as their default src; keep it stable.
 const avatarFile = 'miko.mavatar';
-const publishedUrl = `https://shinshin86.github.io${base}`;
+const publishedUrl = `https://kael-odin.github.io${base}`;
 
 function socialImage(): Plugin {
   return {
