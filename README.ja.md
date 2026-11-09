@@ -1,6 +1,6 @@
 # Mesh Avatar Studio
 
-[English](README.md) · [简体中文](README.zh.md)
+[简体中文](README.md) · [English](README.en.md)
 
 1枚のイラストから、まばたき・口パク・首振り・呼吸・髪の揺れをする 2D メッシュアバターを作るツールです。アバターの作成はコーディングエージェントが行い、細かい調整はプレビューを見ながらローカルのエディタで行います。
 

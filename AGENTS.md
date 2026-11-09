@@ -1,4 +1,11 @@
-# Mesh Avatar Studio
+# Mesh Avatar Studio（中文汉化版）
+
+This repository is a Simplified-Chinese localization fork of
+https://github.com/shinshin86/mesh-avatar-studio. The app defaults to Chinese
+(`src/editor/i18n.tsx`), `README.md` is the Chinese README, English is in `README.en.md`
+and Japanese in `README.ja.md`. Chinese doc mirrors use the `.zh.md` suffix. Keep these
+localization differences when merging upstream; English originals take precedence when
+content conflicts.
 
 This repository contains a local editor and a data-driven WebGL mesh avatar engine.
 To create an avatar from an illustration, follow [docs/agent-guide.md](docs/agent-guide.md)
