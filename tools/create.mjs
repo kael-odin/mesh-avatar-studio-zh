@@ -92,6 +92,44 @@ const text = {
     ready: name => `アバターができました: projects/${name}。引き継ぎメモ: projects/${name}/HANDOVER.md`,
     opening: 'エディタを起動します。止めるときは Ctrl+C を押してください。',
   },
+  zh: {
+    usage: '用法: npm run create -- <image.png> [--name <name>] [--yes | --no-variants] [--no-open]\n'
+      + '      npm run create -- --random [--prompt <text>] [--seed <number>] [--name <name>] [--yes] [--no-open]\n\n'
+      + 'Codex 还会用 OpenAI 图像生成绘制闭眼、口型和表情差分,\n'
+      + '如果插画中的嘴是张开的,会先把它闭上,让虚拟形象以闭嘴状态休息。\n'
+      + '因为这会把图像和蒙版发送给 OpenAI,所以命令会先征求同意。\n\n'
+      + '  --name         projects/ 下的项目名(默认: 取自文件名)\n'
+      + '  --yes, -y      不再询问,直接同意图像生成\n'
+      + '  --no-variants  全部在本机完成,跳过绘制的差分\n'
+      + '  --no-open      虚拟形象完成后不启动编辑器\n'
+      + '  --random       用 OpenAI 图像生成新绘制一个动漫风格女孩,并以她为起点\n'
+      + '  --prompt       配合 --random: 描述她的外貌;其余部分随机决定\n'
+      + '  --seed         配合 --random: 重复同一组随机选择',
+    missingImage: '请提供 PNG 插画的路径,或用 --random 新绘制一个角色。',
+    imageAndRandom: '图像和 --random 只能二选一,不能同时指定。',
+    randomNeedsVariants: '--random 会用 OpenAI 图像生成绘制角色,因此不能与 --no-variants 同时使用。',
+    badSeed: seed => `无效的 seed: ${seed}。请使用整数。`,
+    randomConsent: 'Codex 将用 OpenAI 图像生成新绘制一个角色,并绘制她的闭眼、口型和表情差分。\n图像和蒙版会发送给 OpenAI。继续吗? [Y/n] ',
+    needRandomConsent: '--random 使用 OpenAI 图像生成。当前没有可询问的终端,请加 --yes 表示同意。',
+    character: (seed, character) => `正在绘制新角色(seed ${seed}): ${character}`,
+    drawFailed: status => `Codex 未能绘制角色(退出码 ${status})。`,
+    badDrawing: (path, problems) => `绘制的角色无法使用(${problems.join('; ')}): ${path}`,
+    noImage: path => `未找到图像: ${path}`,
+    badName: name => `无效的项目名: ${name}。请使用字母、数字、连字符或下划线。`,
+    exists: name => `projects/${name} 已存在。请换一个 --name。`,
+    consent: 'Codex 将用 OpenAI 图像生成绘制闭眼、口型和表情差分,\n如果插画中的嘴是张开的,会先把它闭上。\n这会把图像和蒙版发送给 OpenAI。继续吗? [Y/n] ',
+    noConsent: '不发送图像。将在没有绘制差分的情况下创建虚拟形象。',
+    needConsent: '绘制差分会把图像发送给 OpenAI 图像生成。当前没有可询问的终端,请加 --yes 表示同意,或加 --no-variants 跳过差分。',
+    environment: '请先解决上面标记的工具问题,再重新运行此命令。',
+    noCodex: '未找到 Codex CLI。请安装并登录: https://github.com/openai/codex',
+    creating: name => `正在创建 projects/${name} …`,
+    agent: 'Codex(编程助手)正在构建虚拟形象。通常需要几十分钟。',
+    agentFailed: status => `Codex 以退出码 ${status} 停止。如有说明,可在项目文件夹中查看。`,
+    incomplete: name => `Codex 已结束,但 projects/${name} 中没有构建好的虚拟形象。请阅读 projects/${name}/HANDOVER.md 了解原因。`,
+    missingVariants: names => `缺少以下绘制的差分,虚拟形象将使用回退显示: ${names.join(', ')}。详见 HANDOVER.md。`,
+    ready: name => `虚拟形象已完成: projects/${name}。交接说明: projects/${name}/HANDOVER.md`,
+    opening: '正在启动编辑器。按 Ctrl+C 停止。',
+  },
 };
 
 export function parseArgs(argv) {

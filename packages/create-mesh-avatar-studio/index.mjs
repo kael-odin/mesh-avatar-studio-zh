@@ -12,7 +12,7 @@ const MIN_NODE = [22, 17];
 
 const text = {
   en: {
-    usage: `Usage: npx create-mesh-avatar-studio [directory] [--lang en|ja]
+    usage: `Usage: npx create-mesh-avatar-studio [directory] [--lang en|ja|zh]
 
 Downloads Mesh Avatar Studio into the directory (default: ${DEFAULT_DIRECTORY}),
 installs its packages and checks the tools it needs.`,
@@ -33,7 +33,7 @@ To create an avatar from your illustration, open Claude Code or Codex in ${direc
 and follow README.md.`,
   },
   ja: {
-    usage: `使い方: npx create-mesh-avatar-studio [フォルダ名] [--lang en|ja]
+    usage: `使い方: npx create-mesh-avatar-studio [フォルダ名] [--lang en|ja|zh]
 
 Mesh Avatar Studio をフォルダ(既定: ${DEFAULT_DIRECTORY})にダウンロードし、
 パッケージのインストールと必要なツールの確認を行います。`,
@@ -53,6 +53,27 @@ npm run dev が表示する URL(例: http://127.0.0.1:5173/)をブラウザで�
 自分のイラストからアバターを作るときは、${directory} で Claude Code か Codex を開き、
 README.ja.md の手順に沿って進めてください。`,
   },
+  zh: {
+    usage: `用法: npx create-mesh-avatar-studio [目录名] [--lang en|ja|zh]
+
+将 Mesh Avatar Studio 下载到目录(默认: ${DEFAULT_DIRECTORY}),
+安装其依赖包并检查所需的工具。`,
+    nodeOld: version => `需要 Node.js ${MIN_NODE.join('.')} 或更高版本(当前为 ${version})。请从 https://nodejs.org/ 安装。`,
+    gitMissing: '未找到 Git。请从 https://git-scm.com/downloads 安装后,重新运行此命令。',
+    notEmpty: directory => `${directory} 已存在且不为空。请换一个目录名。`,
+    cloning: directory => `正在将 Mesh Avatar Studio 下载到 ${directory}…`,
+    cloneFailed: '无法下载仓库。请检查网络连接后重试。',
+    installing: '正在安装依赖包(npm ci)…',
+    installFailed: directory => `无法安装依赖包。请先解决上面的错误,然后在 ${directory} 中运行「npm ci」。`,
+    next: (directory, ready) => `
+后续步骤:
+  cd ${directory}
+  ${ready ? 'npm run dev' : 'npm run doctor   # 安装上面的工具后再检查'}
+
+在浏览器中打开 npm run dev 显示的 URL,例如 http://127.0.0.1:5173/。
+想用自己的插画创建虚拟形象时,请在 ${directory} 中打开 Claude Code 或 Codex,
+按照 README.zh.md 的步骤操作。`,
+  },
 };
 
 export function parseArgs(argv, env = process.env) {
@@ -64,9 +85,9 @@ export function parseArgs(argv, env = process.env) {
     else if (arg.startsWith('--lang=')) lang = arg.slice(7);
     else if (!arg.startsWith('-') && directory === undefined) directory = arg;
   }
-  if (lang !== 'en' && lang !== 'ja') {
+  if (lang !== 'en' && lang !== 'ja' && lang !== 'zh') {
     const locale = env.LC_ALL || env.LC_MESSAGES || env.LANG || Intl.DateTimeFormat().resolvedOptions().locale;
-    lang = /^ja/i.test(locale ?? '') ? 'ja' : 'en';
+    lang = /^ja/i.test(locale ?? '') ? 'ja' : /^zh/i.test(locale ?? '') ? 'zh' : 'en';
   }
   return { directory: directory ?? DEFAULT_DIRECTORY, lang, help };
 }

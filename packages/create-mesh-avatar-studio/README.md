@@ -1,5 +1,30 @@
 # create-mesh-avatar-studio
 
+## 简体中文
+
+一条命令搭建 [Mesh Avatar Studio](https://github.com/shinshin86/mesh-avatar-studio),并使用简体中文提示:
+
+```sh
+npx create-mesh-avatar-studio --lang zh
+```
+
+该命令会用 Git 将仓库下载到 `mesh-avatar-studio/`(或你指定的目录),安装依赖包并检查所需工具。
+完成后启动编辑器:
+
+```sh
+cd mesh-avatar-studio
+npm run dev
+```
+
+需要 Node.js 22.17+ 和 Git。也可以指定目录,例如 `npx create-mesh-avatar-studio my-avatars --lang zh`。
+未显式指定 `--lang` 时,默认跟随系统区域设置(中文环境自动使用简体中文)。
+
+进入目录后,随时可用 `npm run doctor -- --lang zh` 重新检查环境;
+用插画创建虚拟形象可运行 `npm run create -- <image.png> --lang zh`(发送给编程助手的指令保持英文)。
+更多中文说明见本仓库的 [README.md](../../README.md)(中文汉化版主文档)。
+
+---
+
 Set up [Mesh Avatar Studio](https://github.com/shinshin86/mesh-avatar-studio) in one command.
 
 <p align="center">
@@ -25,6 +50,7 @@ Requires Node.js 22.17+ and Git.
 ```sh
 npx create-mesh-avatar-studio my-avatars   # choose the folder
 npx create-mesh-avatar-studio --lang ja    # messages in Japanese (default follows your locale)
+npx create-mesh-avatar-studio --lang zh    # messages in Simplified Chinese
 ```
 
 ## What the check reports

@@ -45,13 +45,31 @@ const text = {
     warned: 'エディタは次のコマンドで起動できます: npm run dev\nアバターを作る前に、警告の付いたツールをインストールしてください。',
     passed: 'すべて揃っています。次のコマンドでエディタを起動できます: npm run dev',
   },
+  zh: {
+    title: 'Mesh Avatar Studio 运行环境检查',
+    node: version => `Node.js ${version}`,
+    nodeOld: version => `需要 Node.js ${MIN_NODE.join('.')} 或更高版本(当前为 ${version})。请从 https://nodejs.org/ 安装。`,
+    packages: '依赖包已安装',
+    packagesMissing: '依赖包尚未安装。请运行: npm install',
+    uv: version => `uv ${version}`,
+    uvMissing: '未找到 uv。编辑器可以直接使用,但重建图层和创建虚拟形象需要它。\n  安装: https://docs.astral.sh/uv/getting-started/installation/',
+    python: version => `Python ${version}(由 uv 检测到)`,
+    pythonMissing: 'uv 未找到 Python 3.10 或更高版本。编辑器可以使用,但重建图层和创建虚拟形象需要它。\n  安装: uv python install 3.12',
+    pythonSkipped: '由于缺少 uv,未检查 Python。',
+    pythonFreeThreaded: version => `uv 选择了自由线程版 Python ${version}。OpenCV 没有适用于该版本的现成包,重建图层可能会失败。\n  请安装常规版本: uv python install 3.13`,
+    chromium: 'Playwright Chromium',
+    chromiumMissing: '未找到 Playwright Chromium。编辑器和直播页面可以直接使用。\n  用编程助手创建虚拟形象,或导入绘制的眼睛和嘴巴时,需要它来渲染动作审查。\n  安装: npx playwright install chromium',
+    failed: '请先解决上面的错误,再启动编辑器。',
+    warned: '可以用以下命令启动编辑器: npm run dev\n请在创建虚拟形象之前,安装带有警告标记的工具。',
+    passed: '一切就绪。用以下命令启动编辑器: npm run dev',
+  },
 };
 
 export function language(argv = process.argv.slice(2), env = process.env) {
   const flag = argv.find(arg => arg.startsWith('--lang='))?.slice(7) ?? argv[argv.indexOf('--lang') + 1];
-  if (flag === 'ja' || flag === 'en') return flag;
+  if (flag === 'ja' || flag === 'en' || flag === 'zh') return flag;
   const locale = env.LC_ALL || env.LC_MESSAGES || env.LANG || Intl.DateTimeFormat().resolvedOptions().locale;
-  return /^ja/i.test(locale ?? '') ? 'ja' : 'en';
+  return /^ja/i.test(locale ?? '') ? 'ja' : /^zh/i.test(locale ?? '') ? 'zh' : 'en';
 }
 
 export function nodeVersionOk(version) {
